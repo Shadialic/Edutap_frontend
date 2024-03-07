@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import meta from "../../assets/images/web.gif";
 import { FaEyeSlash, FaRegEye } from "react-icons/fa";
-import { setTutorDetailes } from "../../Redux/TutorSlice/tutorSlice";
+import { setTutorDetailes } from "../../Redux/TutorSlice/TutorSlice";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import { tutorLogin, tutorRegisterGoogle } from "../../api/VendorApi";
 import { useDispatch } from "react-redux";

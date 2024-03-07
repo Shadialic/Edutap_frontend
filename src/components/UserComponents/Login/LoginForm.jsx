@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { FaEyeSlash, FaRegEye } from "react-icons/fa";
 import { userLogin, userRegisterGoogle } from "../../../api/UserApi";
-import { setUserDetails } from "../../../Redux/userSlice/userSlice";
+import { setUserDetails } from "../../../Redux/UserSlice/UserSlice";
 import { useDispatch } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
