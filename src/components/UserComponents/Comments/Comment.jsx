@@ -6,7 +6,6 @@ import { TimeMange } from "../../../helpers/TimeMange";
 import { io } from "socket.io-client";
 
 function Comment({ chapterId, userInfo }) {
-  console.log(chapterId,'chapterId');
   const [commentText, setCommentText] = useState("");
   const [showComments, setShowComments] = useState([]);
   const [socket, setSocket] = useState(null);

@@ -2,7 +2,7 @@ import { NavLink, Link, useNavigate } from "react-router-dom";
 import logo from "../../../assets/images/logoO.png";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { resetState } from "../../../Redux/userSlice/userSlice";
+import { resetState } from "../../../Redux/UserSlice/UserSlice";
 
 const Navbar = () => {
   const [showNavbar, setShowNavbar] = useState(false);
