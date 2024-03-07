@@ -14,7 +14,7 @@ import "react-calendar/dist/Calendar.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { UpdateProfile, UpdateUser, getUserData } from "../../../api/UserApi";
-import { setUserDetails } from "../../../Redux/userSlice/userSlice";
+import { setUserDetails } from "../../../Redux/UserSlice/UserSlice";
 import { useNavigate } from "react-router-dom";
 
 function DisplayProfile() {
