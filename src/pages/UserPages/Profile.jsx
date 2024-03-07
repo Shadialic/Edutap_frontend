@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Header from '../../components/UserComponents/Layouts/Header';
-import DisplayProfile from '../../components/UserComponents/profile/DisplayProfile';
+import DisplayProfile from '../../components/UserComponents/Profile/DisplayProfile';
 import { Loader } from '../../components/Constans/Loader/Loader'; 
 
 function Profile() {
