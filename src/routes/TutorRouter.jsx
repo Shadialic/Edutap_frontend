@@ -8,7 +8,7 @@ import Header from "../components/TutorComponents/TutorLayouts/Header";
 import { Footer } from "../components/TutorComponents/TutorLayouts/Footer";
 import TutorProfile from "../pages/TutorPages/TutorProfile";
 import TutorPublic from "./TutorPublic";
-import Otp from "../components/otp/Otp";
+import Otp from "../components/Otp/Otp";
 import WaitingList from "../pages/TutorPages/WaitingList";
 import RunningClasses from "../pages/TutorPages/RunningClasses";
 import TutorChat from "../components/Chat/TutorChat";
