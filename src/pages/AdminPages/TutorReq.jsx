@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../../components/AdminComponents/Layouts/Sidebar";
 import Navbar from "../../components/AdminComponents/Layouts/Navbar";
-import { LoadTutorList, apporvTutor } from "../../api/AdminApi";
-import { ToastContainer, toast } from "react-toastify";
+import { LoadTutorList } from "../../api/AdminApi";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch } from "react-redux";
 import ReactPaginate from "react-paginate";
@@ -12,11 +12,10 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 import approval from "../../../public/images/admin/icons/approval.png";
-import { TuotoApporuval } from "../../components/AdminComponents/modals/TuotoApporuval";
+import { TuotoApporuval } from "../../components/AdminComponents/Modals/TuotoApporuval";
 
 
 function Tutors() {
-  const dispatch = useDispatch();
   const [isOpn, setOpn] = useState(false);
   const [tutor, setTutor] = useState([]);
   const [filter, setfiler] = useState();
