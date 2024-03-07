@@ -4,7 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import Login from "../pages/UserPages/Login";
 import Home from "../pages/UserPages/Home";
 import Signup from "../pages/UserPages/Signup";
-import Otp from "../components/otp/Otp";
+import Otp from "../components/Otp/Otp";
 import UserPublic from "./UserPublic";
 import Profile from "../pages/UserPages/Profile";
 import Course from "../pages/UserPages/Course";
