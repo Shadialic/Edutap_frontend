@@ -64,7 +64,7 @@ function UserChat() {
   };
 
   useEffect(() => {
-    const newSocket = io("http://edutap.malefashion.fun");
+    const newSocket = io("https://edutap.malefashion.fun");
     setSocket(newSocket);
     return () => {
       newSocket.disconnect();

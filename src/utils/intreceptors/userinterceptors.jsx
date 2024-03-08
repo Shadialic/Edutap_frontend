@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "http://edutap.malefashion.fun"
+  baseURL: "https://edutap.malefashion.fun"
 });
 
 let token = localStorage.getItem("token");
