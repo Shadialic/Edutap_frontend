@@ -13,7 +13,7 @@ function Comment({ chapterId, userInfo }) {
 
 
   useEffect(() => {
-    const newSocket = io("http://localhost:3000");
+    const newSocket = io("http://edutap.malefashion.fun");
     setSocket(newSocket);
     return () => {
       newSocket.disconnect();

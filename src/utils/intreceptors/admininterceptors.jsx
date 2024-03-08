@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "http://localhost:3000/admin"
+  baseURL: "http://edutap.malefashion.fun/admin"
 });
 
 let token = localStorage.getItem("admintoken");
