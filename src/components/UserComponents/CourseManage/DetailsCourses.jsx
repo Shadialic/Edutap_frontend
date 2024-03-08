@@ -19,7 +19,7 @@ import { LoadTutorList } from "../../../api/AdminApi";
 import { fetchChapter } from "../../../api/VendorApi";
 import { Loader } from "../../Constans/Loader/Loader";
 
-const StripePromise = await loadStripe(
+const StripePromise =  loadStripe(
   import.meta.env.VITE_REACT_APP_PUBLISHABLE_KEY
 );
 
