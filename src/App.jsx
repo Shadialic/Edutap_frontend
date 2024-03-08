@@ -10,9 +10,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<UserRouter />} />
-        
         <Route path="/vendor/*" element={<TutorRouter />} />
-        
         <Route path="/admin/*" element={<AdminRoutes />} />
       </Routes>
     </Router>

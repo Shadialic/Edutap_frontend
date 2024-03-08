@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { SuccessRequest } from "../../api/UserApi";
 
 function LoadStripe({
-  
+  clientSecret,
   bugs,
   courseId,
   tutorId,
