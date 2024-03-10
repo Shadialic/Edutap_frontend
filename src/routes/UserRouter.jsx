@@ -38,7 +38,7 @@ function UserRouter() {
       <Route path="/otp" exact element={<Otp />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/profile" element={<UserProtect><Profile/></UserProtect>} />
-      <Route path="/course" element={<Course />} />
+      <Route path="/course" element={<UserProtect><Course /></UserProtect>} />
        <Route path="/enrollments"element={<UserProtect><Enrollments /> </UserProtect> }/>
       <Route path="/about" element={<About />} />
       <Route path="/blog" element={<Blog />} />

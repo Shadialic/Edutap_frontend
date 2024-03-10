@@ -15,7 +15,7 @@ function WaitingList() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetchCoures({ auther: tutorMail });
+        const res = await fetchCoures({ author: tutorMail });
         const updateData = res.data.course;
         const filterData = updateData.filter(
           (item) => item.is_varified === "false"
@@ -27,7 +27,7 @@ function WaitingList() {
       }
     };
     fetchData();
-  }, []);
+  },[data]);
 
   const canceldata = async (id) => {
     await manageCourse(id).then((res) => {

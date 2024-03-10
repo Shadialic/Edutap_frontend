@@ -44,7 +44,7 @@ const Navbar = () => {
           <div className="flex items-center justify-between  ">
             <div className="flex flex-row lg:pb-2 ">
               <img src={logo} alt="" className="w-18 h-16  " />
-              <h2 className="pt-3 lg:text-xl    sm:text-xl  font-bold mt-2  font-prompt font-prompt-normal">
+              <h2 className="pt-3 lg:text-xl sm:text-xl  font-bold mt-2  font-prompt font-prompt-normal">
                 Edu-tap
               </h2>
             </div>

@@ -3,6 +3,7 @@ import home_image from "../../../../public/images/tutor/Online world-bro.png";
 import bg from "../../../../public/images/tutor/bg-home.jpg";
 import Form from "../Add_form/Form";
 import { useSelector } from "react-redux";
+import Header from "../TutorLayouts/Header";
 
 function Home() {
   const [isOpn, SetOpn] = useState(false);
@@ -14,12 +15,13 @@ function Home() {
 
   return (
     <div>
+      <Header/>
       {!isOpn ? (
         <div className="">
           <div className="absolute -z-40">
             <img src={bg} className="w-full h-screen" alt="" />
           </div>
-          <div className="w-screen h-screen flex justify-center items-center py-7 px-5 overflow-auto ">
+          <div className="w-full h-screen flex justify-center items-center py-7 px-5 overflow-auto ">
             <div className="bg-white max-w-full sm:max-w-[80%] min-h-[100%] overflow-auto rounded-md flex justify-center items-center shadow-xl p-3 gap-5 flex-row">
               <div className="justify-center items-center text-center hidden lg:flex flex-col sm:w-1/2 relative">
                 <img

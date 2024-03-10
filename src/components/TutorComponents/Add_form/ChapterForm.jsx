@@ -5,7 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { addChapter } from "../../../api/VendorApi";
 import { Button } from "@material-tailwind/react";
-
+import { BarLoader } from "react-spinners";
 function ChapterForm({ setOpn, courseId }) {
   const [video, setVideo] = useState();
   const [demoFileName, setDemoFileName] = useState("");
@@ -16,9 +16,11 @@ function ChapterForm({ setOpn, courseId }) {
     demoVideo: null,
     chapterVideo: null,
   });
+  const [loading, setLoading] = useState(false);
 
   const uploadVideo = async (file) => {
     try {
+      setLoading(true);
       const formData = new FormData();
       formData.append("file", file);
       formData.append("upload_preset", "Edu-tap");
@@ -41,8 +43,10 @@ function ChapterForm({ setOpn, courseId }) {
         return;
       }
       const uploadedVideoUrl = cloudinaryData.secure_url;
+      setLoading(false);
       return uploadedVideoUrl;
     } catch (error) {
+      setLoading(false);
       console.log("Error during video upload:", error);
     }
   };
@@ -50,7 +54,7 @@ function ChapterForm({ setOpn, courseId }) {
   const handleVideoChange = async (event, type) => {
     const file = event.target.files[0];
     const fileName = file.name;
-  
+
     const url = await uploadVideo(file);
     setVideo(url);
     if (type === "demo") {
@@ -58,7 +62,6 @@ function ChapterForm({ setOpn, courseId }) {
     } else if (type === "chapter") {
       setChapterFileName(fileName);
     }
-    console.log(url, "url");
     setFormData({ ...formData, [`${type}Video`]: url });
   };
 
@@ -66,7 +69,7 @@ function ChapterForm({ setOpn, courseId }) {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
   };
-  
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (
@@ -80,7 +83,6 @@ function ChapterForm({ setOpn, courseId }) {
     } else {
       try {
         const response = await addChapter(formData, courseId);
-        console.log(response, "lllllllllllllll");
         setFormData({
           chapterTitle: "",
           chapterDescription: "",
@@ -98,10 +100,15 @@ function ChapterForm({ setOpn, courseId }) {
   };
   return (
     <>
-      <div className="bg-authentication-background bg-cover flex justify-center items-center w-screen h-fit py-7 px-5">
-        <div className="bg-white w-full sm:max-w-[90%] min-h-[100%] rounded-md flex border-2 border-gray-100 shadow-xl p-3 gap-5 flex-row">
-          <img className="w-[50%] h-[80%] p-7" src={form_img} alt="" />
-          <div className="flex">
+      <div className="bg-authentication-background bg-cover flex justify-center items-center  lg:h-fit py-7 px-5">
+        <div className="bg-white  sm:max-w-[100%] min-h-[100%] rounded-md flex border-2 border-gray-100 shadow-xl p-3 gap-5 flex-row">
+          <img
+            className="hidden sm:block w-[50%] h-[80%] p-7"
+            src={form_img}
+            alt=""
+          />
+
+          <div className="p-3sm:flex">
             <form onSubmit={handleSubmit} action="">
               <div className="font-promt p-8 ">
                 <label
@@ -116,7 +123,7 @@ function ChapterForm({ setOpn, courseId }) {
                     name="chapterTitle"
                     value={formData.chapterTitle}
                     onChange={handleInputChange}
-                    className="border-2 border-gray-100 w-[250px] sm:w-[480px] h-[40px] outline-none rounded-md shadow-md p-2"
+                    className="border-2 border-gray-100 w-full sm:w-[480px] h-[40px] outline-none rounded-md shadow-md p-2"
                     type="text"
                     placeholder="Title"
                   />
@@ -135,7 +142,7 @@ function ChapterForm({ setOpn, courseId }) {
                     name="chapterDescription"
                     value={formData.chapterDescription}
                     onChange={handleInputChange}
-                    className="border-2 border-gray-100 w-[250px] sm:w-[480px] h-[40px] outline-none rounded-md shadow-md p-2 focus:ring-1 "
+                    className="border-2 border-gray-100 w-full sm:w-[480px] h-[40px] outline-none rounded-md shadow-md p-2 focus:ring-1 "
                     type="text"
                     placeholder="Chapter description (Max-150)"
                   />
@@ -214,6 +221,12 @@ function ChapterForm({ setOpn, courseId }) {
                   />
                 </div>
               </div>
+              <div className="w-full flex justify-center  p-4">
+                {loading && (
+                  <BarLoader color="#a549f4" width={200} height={10} />
+                )}
+              </div>
+
               <div className="flex justify-end mb-3 pr-8 pb-3">
                 <Button
                   type="submit"
@@ -239,8 +252,6 @@ function ChapterForm({ setOpn, courseId }) {
       </div>
       <ToastContainer />
     </>
-
-
   );
 }
 

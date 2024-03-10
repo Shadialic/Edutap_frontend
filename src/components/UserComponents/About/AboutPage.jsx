@@ -21,7 +21,7 @@ function AboutPage() {
   }, []);
   return (
     <>
-      <div className="w-screen h-screen overflow-x-hidden ">
+      <div >
         <div className="flex flex-row w-full h-80">
           <div className="w-1/2 sm:content lg:w-1/2 mr-4 p-7 pl-7 mt-16 ml-12 h-[100%] rounded-2xl bg-violet-400 shadow shadow-violet-900">
             <h3 className="text-[#ffffff] ml-2 font-prompt-semibold">
@@ -123,11 +123,7 @@ function AboutPage() {
             </div>
           </div>
         </div>
-        {/* <div className="flex ml-14">
-        <div className="w-[40%]  h-80 bg-gray-200 ">
-          <img className="w-full h-full " src={view} alt="" />
-        </div>
-      </div> */}
+      
       </div>
     </>
   );

@@ -24,7 +24,6 @@ function DisCourse() {
   const [showCategoryMenu, setShowCategoryMenu] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
-
   const inputHandler = (e) => {
     const lowerCase = e.target.value.toLowerCase();
     setInputText(lowerCase);
@@ -126,7 +125,7 @@ function DisCourse() {
   return (
     <>
       {!isOpn ? (
-        <div className="flex flex-col sm:flex lg:flex-row">
+        <div className="flex flex-col sm:flex  overflow-hidden lg:flex-row">
           {!showCategoryMenu && (
             <div className="lg:hidden w-full flex flex-col h-full justify-center items-center lg:gap-1 mt-3">
               <div className="w-full h-fit flex items-center justify-center bg-white p-3 mt-3 text-3xl font-prompt uppercase tracking-tight text-slate-900">

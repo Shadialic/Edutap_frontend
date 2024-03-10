@@ -88,6 +88,7 @@ export async function UpdateProfile(updateData) {
 }
 export async function fetchCoures(data) {
   try {
+    console.log(data,'data');
     const response = await TutorApi.post("/vendor/getcoures", data);
     return response;
   } catch (error) {

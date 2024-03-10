@@ -152,7 +152,7 @@ function Collections({ chapter, courseId, tutors, course }) {
   };
 
   return (
-    <div className="flex flex-col sm:flex lg:flex-row w-screen h-fit">
+    <div className="flex flex-col sm:flex lg:flex-row w-full h-fit">
       <div className="w-full sm:w-[65%] h-fit p-4">
         <video
           className="w-full h-auto"
@@ -227,8 +227,8 @@ function Collections({ chapter, courseId, tutors, course }) {
         <Comment chapterId={data} userInfo={userInfo} />
       </div>
 
-      <div className="w-full sm:flex flex-col lg:w-[35%] p-4 pr-4">
-        <div className="w-[95%] h-10 border-2 border-gray-100 font-prompt p-1">
+      <div className="w-full sm:flex flex-col lg:w-[37%] p-4 pr-4">
+        <div className="w-[100%] h-10 border-2 border-gray-100 font-prompt p-1">
           <span className="mb-2 text-sm">
             {count + 1}
             <span className="text-xl">/</span>
@@ -236,7 +236,7 @@ function Collections({ chapter, courseId, tutors, course }) {
           </span>
           <span className="ml-2">Chapters</span>
         </div>
-        <div className="w-[95%] h-auto border-2 mt-4">
+        <div className="w-[100%] h-auto border-2 mt-4">
           {data.map((chapter, index) => (
             <div
               className="flex flex-row p-5"
@@ -252,9 +252,17 @@ function Collections({ chapter, courseId, tutors, course }) {
                 <h1>{`${index + 1}. ${chapter.chapterTitle}`}</h1>
               </div>
               {videoCompletionStatus[index] ? (
-                <FontAwesomeIcon icon={faUnlock} style={{ color: "#B197FC" }} />
+                <FontAwesomeIcon
+                  icon={faUnlock}
+                  className="  absolute right-7  "
+                  style={{ color: "#B197FC" }}
+                />
               ) : (
-                <FontAwesomeIcon icon={faLock} style={{ color: "#B197FC" }} />
+                <FontAwesomeIcon
+                  icon={faLock}
+                  className="absolute right-7"
+                  style={{ color: "#B197FC" }}
+                />
               )}
             </div>
           ))}
@@ -262,7 +270,7 @@ function Collections({ chapter, courseId, tutors, course }) {
         <div className="mt-4">
           <StarRating courseId={courseId} userId={userInfo.id} />
         </div>
-        <div className="flex flex-col w-[95%] bg-white border-1 shadow-xl">
+        <div className="flex flex-col w-[100%] bg-white border-1 shadow-xl">
           <div className="flex flex-row items-center p-4">
             <h1 className="font-prompt">Reviews</h1>
             <img className="w-4 h-4 mt-1 ml-2" src={reviewimg} alt="" />
@@ -302,7 +310,7 @@ function Collections({ chapter, courseId, tutors, course }) {
 
         <div className="mt-4">
           <textarea
-            className="w-[95%] border-none border-gray-300 font-prompt border-2 shadow-xl shadow-gray-300 p-2"
+            className="w-[100%] border-none border-gray-300 font-prompt border-2 shadow-xl shadow-gray-300 p-2"
             name="reviews"
             id=""
             cols="30"

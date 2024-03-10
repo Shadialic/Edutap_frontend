@@ -15,9 +15,9 @@ function TutorHome() {
   return (
     <>
       {isLoading ? (
-        <div>
+        <>
           <Loader />
-        </div>
+        </>
       ) : (
         <Home />
       )}

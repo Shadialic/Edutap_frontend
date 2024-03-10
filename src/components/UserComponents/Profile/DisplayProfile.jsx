@@ -128,9 +128,9 @@ function DisplayProfile() {
   return (
     <div>
       {isOpn === "profile" ? (
-        <div className="flex w-screen h-screen  justify-center items-center shadow-sm ">
+        <div className="h-auto sm:h-screen  flex  justify-center items-center shadow-sm ">
           <div className="w-[80%] sm:flex flex-row lg:w-[75%] h-[90%] bg-white shadow-sm rounded-lg  shadow-violet-600">
-            <div className="w-[90%] sm:w-[30%] h-[90%] bg-white shadow-sm shadow-violet-600 mt-4 ml-5 ">
+            <div className="w-[90%] p-3 sm:w-[30%] h-[90%] bg-white shadow-sm shadow-violet-600 mt-4 ml-5 ">
               <div>
                 <div className="flex justify-center items-center ">
                   {data && data.image ? (
@@ -152,7 +152,10 @@ function DisplayProfile() {
                 {name}
               </h1>
               <div className="flex flex-col w-[75%] h-[10%] bg-violet-600 text-white font-prompt rounded-md justify-center items-center ml-9 mt-5">
-                <label htmlFor="profileImageInput" className="cursor-pointer">
+                <label
+                  htmlFor="profileImageInput"
+                  className="cursor-pointer text-[16px]"
+                >
                   Update image
                 </label>
                 <input
@@ -182,20 +185,28 @@ function DisplayProfile() {
                 </div>
               </div>
 
-              <div className="pl-9 font-prompt flex-row flex gap-2 ">
-                <label htmlFor="">Full Name :</label>
+              <div className="pl-9 font-prompt flex-row flex gap-1  ">
+                <label htmlFor="" className="text-[15px] pt-1 ">
+                  Full Name :
+                </label>
                 <h1 className="gap-3">{data.userName}</h1>
               </div>
-              <div className="pl-9 font-prompt flex-row flex gap-2 mt-2">
-                <label htmlFor="">Email :</label>
+              <div className="pl-9 font-prompt flex-row flex gap-1  ">
+                <label htmlFor="" className="text-[15px]  pt-1">
+                  Email :
+                </label>
                 <h1 className="gap-3">{data.email}</h1>
               </div>
-              <div className="pl-9 font-prompt flex-row flex gap-2 mt-2">
-                <label htmlFor="">Phone :</label>
+              <div className="pl-9 font-prompt flex-row flex gap-2 ">
+                <label htmlFor="" className="text-[15px]  pt-1">
+                  Phone :
+                </label>
                 <h1 className="gap-3">{data.phone}</h1>
               </div>
-              <div className="pl-9 font-prompt flex-row flex gap-2 mt-2">
-                <label htmlFor="">Country :</label>
+              <div className="pl-9 font-prompt flex-row flex gap-2 ">
+                <label htmlFor="" className="text-[15px]  pt-1">
+                  Country :
+                </label>
                 <h1 className="gap-3">{data.Country}</h1>
               </div>
               <div className="flex flex-row justify-between">
@@ -217,18 +228,24 @@ function DisplayProfile() {
                   />
                 </div>
               </div>
-              <div className="flex flex-row">
+              <div className="sm:flex flex-row">
                 <div className="pl-9 font-prompt flex-row flex gap-2 mb-1">
-                  <label htmlFor="">Qualification :</label>
-                  <h1 className="gap-3">{data.Qualification}</h1>
+                  <label htmlFor="" className="text-[15px]  pt-1">
+                    Qualification :
+                  </label>
+                  <h1 className="gap-3 text-[15px]">{data.Qualification}</h1>
                 </div>
-                <div className="pl-7 font-prompt flex-row flex gap-2 mb-1 ml-36">
-                  <label htmlFor="">Year :</label>
+                <div className="ml-9 sm:pl-7 font-prompt flex-row flex gap-2 mb-1 lg:ml-36">
+                  <label htmlFor="" className="text-[15px]  pt-1">
+                    Year :
+                  </label>
                   <h1 className="gap-2">{data.year}</h1>
                 </div>
               </div>
               <div className="pl-9 font-prompt flex-row flex gap-2 mt-1">
-                <label htmlFor="">Institute :</label>
+                <label htmlFor="" className="text-[15px]  pt-1">
+                  Institute :
+                </label>
                 <h1 className="gap-2">{data.Institute}</h1>
               </div>
               <div>

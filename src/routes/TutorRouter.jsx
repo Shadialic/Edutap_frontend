@@ -33,8 +33,8 @@ function TutorRouter() {
       <Route path="/signup" exact element={<><TutorPublic /><TutorSignUp /><TutorPublic /></>} />
       <Route path="/login" element={<>{" "}<TutorPublic /> <TutorLogin /><TutorPublic />{" "}</>} />
       <Route path="/otp" exact element={<Otp />} />
-      <Route path="/" exact element={<Lyouts />}>
         <Route path="/" exact element={<TutorProtect><TutorHome /></TutorProtect>} />
+      <Route path="/" exact element={<Lyouts />}>
         <Route path="/profile" exact element={<TutorProtect><TutorProfile /></TutorProtect>} />
         <Route path="/:category" element={<TutorProtect><AddForm /></TutorProtect>} />
         <Route path="/waitinglist" element={<TutorProtect><WaitingList /></TutorProtect>} />

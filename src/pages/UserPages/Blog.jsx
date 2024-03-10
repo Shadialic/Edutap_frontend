@@ -13,7 +13,7 @@ import DetailBLog from "../../components/UserComponents/Blog/DetailBLog";
 function Blog() {
   const userInfo = useSelector((state) => state.user.userInfo);
   const [blogs, setBlogs] = useState([]);
-  const [currentBlog, setCurrentBlog] = useState(null); // Fix: Corrected typo in setCurrentBlog
+  const [currentBlog, setCurrentBlog] = useState(null);
   const [image, setImage] = useState(null);
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState("");
@@ -90,26 +90,29 @@ function Blog() {
         <DetailBLog blog={blogs} blogId={blogId} />
       ) : (
         <>
-          <div className="flex flex-col w-screen h-screen overflow-x-hidden overflow-y-hidden">
-            <Header />
+          <Header />
+          <div className="flex flex-col  h-screen overflow-x-hidden overflow-y-hidden">
             <div className="w-full h-full flex flex-col">
               <h1 className="text-3xl font-prompt font-prompt-semibold p-6">
                 Latest Updates
               </h1>
               {blogs.length > 0 && (
-                <div className="flex flex-row gap-2 w-[90%] h-full pl-16">
-                  <div className="w-[45%] h-[50%]  ">
+                <div
+                  className="w-full sm:flex flex-row gap-2 lg:w-[90%] h-full pl-16"
+                  onClick={() => detailBlog(blogs[0]._id)}
+                >
+                  <div className="w-full sm:w-[45%] h-[50%] ">
                     <img
                       className="w-full h-full"
                       src={blogs[0].image}
                       alt=""
                     />
                   </div>
-                  <div className="w-[60%] h-[50%]  ">
-                    <h1 className="p-6 sm:text-4xl font-Kantumruy">
+                  <div className="sm:w-[60%] h-[50%]  ">
+                    <h1 className="p-2 sm:p-6 sm:text-4xl font-Kantumruy">
                       {blogs[0].title}
                     </h1>
-                    <p className="p-6">
+                    <p className="pl-2 sm:p-6">
                       {truncateDescription(blogs[0].description)}
                     </p>
                     <div className="flex flex-row lg:p-6">
@@ -118,7 +121,9 @@ function Blog() {
                         alt="avatar"
                         size="md"
                       />
-                      <h1 className="pt-3 pl-2">{blogs[0].authorName}</h1>
+                      <h1 className="pt-3 pl-2 font-prompt">
+                        {blogs[0].authorName}
+                      </h1>
                     </div>
                   </div>
                 </div>
@@ -157,8 +162,9 @@ function Blog() {
                       />
                       <div className="p-4 ">
                         <h3 className="text-xl font-prompt font-prompt-semibold mb-2 text-center">
-                          {blog.title}
+                          {blog.title.split(" ").slice(0, 7).join(" ")}
                         </h3>
+
                         <div className="font-prompt border-t-2 pt-2">
                           <FontAwesomeIcon
                             icon={faCalendarDays}
@@ -184,10 +190,10 @@ function Blog() {
               </div>
             )}
 
-            <div className="w-screen flex flex-row justify-center items-center">
+            <div className="w-full flex flex-row justify-center items-center  lg:p-4">
               <button
                 onClick={handleOpen}
-                className="w-[10%] bg-white rounded-md text-violet-600 shadow-xl border-[1px] border-violet-600 shadow-gray-200 font-prompt h-12"
+                className="sm:w-[10%] bg-white rounded-md text-violet-600 shadow-xl border-[1px] border-violet-600 shadow-gray-200 font-prompt h-12"
               >
                 Create Your blog
               </button>

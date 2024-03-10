@@ -261,26 +261,10 @@ function TutorChat() {
     fetch();
   }, []);
 
-  console.log(userChats, "userChats");
-  console.log(searchUsers, "searchUsers");
-  console.log(selectedMember, "selectedMember");
-
-  // const filterData = searchUsers.filter(item => {
-  //   const lowerCaseSearchQuery = searchQuery.toLowerCase();
-  //   const lowerCaseUserName = item.userName ? item.userName.toLowerCase() : '';
-  //   const lowerCaseEmail = item.email ? item.email.toLowerCase() : '';
-  //   return (
-  //     !searchQuery ||
-  //     lowerCaseUserName.includes(lowerCaseSearchQuery) ||
-  //     lowerCaseEmail.includes(lowerCaseSearchQuery)
-  //   );
-  // });
-  // console.log(filterData, "filterData");
-
   return (
     <>
       <Header />
-      <div className="bg-authentication-background bg-cover bg-gray-100 flex justify-center items-center w-screen h-screen py-7 px-5">
+      <div className="bg-authentication-background bg-cover bg-gray-100 flex justify-center items-center py-7 px-5">
         <div className="bg-white  w-full sm:max-w-[90%] min-h-[90%] overflow-hidden rounded-md flex flex-col sm:flex-row mb-16">
           <div className="w-full sm:w-[29%] h-full border-r-0 sm:border-r-2 border-b-0 sm:border-b-2 border-gray-200">
             <div className="flex flex-row justify-between">

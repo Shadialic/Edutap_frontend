@@ -20,7 +20,7 @@ function Form() {
     description: "",
     price: "",
     image: null,
-    category: "", 
+    category: "",
   });
 
   useEffect(() => {

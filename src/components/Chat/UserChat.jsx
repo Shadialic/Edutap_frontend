@@ -181,7 +181,7 @@ function UserChat() {
   return (
     <>
       <Header state="Home" />
-      <div className="bg-authentication-background bg-cover bg-gray-100 flex justify-center items-center w-screen h-screen py-7 px-5">
+      <div className="bg-authentication-background bg-cover bg-gray-100 flex justify-center items-center  py-7 px-5">
         <div className="bg-white w-full sm:max-w-[90%] min-h-[90%] overflow-hidden rounded-md flex flex-col sm:flex-row mb-16">
           <div className="w-full sm:w-[29%] h-full border-r-0 sm:border-r-2 border-b-0 sm:border-b-2 border-gray-200">
             <h1 className="font-prompt text-xl font-prompt-semibold p-3 border-b border-gray-200">

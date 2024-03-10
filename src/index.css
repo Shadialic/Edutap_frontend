@@ -10,23 +10,18 @@
     width: 200px;
     height: 100px;
   }
-  
   video {
     width: 100%;
     height: 100%;
   }
-  
-
   .hidescroll::-webkit-scrollbar {
     display: none;
 }
-  /* Center play button */
   video::cue {
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  
   .active-link {
-    color: #7d0fc6; /* Change this to the color you want for active NavLink */
+    color: #7d0fc6; 
   }

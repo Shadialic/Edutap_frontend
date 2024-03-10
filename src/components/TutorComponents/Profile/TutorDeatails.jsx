@@ -25,7 +25,7 @@ function TutorDeatails({ formData, setFormData }) {
                         Full Name
                       </h1>
                       <h1 className="uppercase font-prompt text-0d rounded-md h-12 p-6 text-white bg-violet-600 text-center flex items-center justify-center">
-                        Ema0d
+                        Email
                       </h1>
                       <h1 className="uppercase font-prompt text-0d rounded-md h-12 p-6 text-white bg-violet-600 text-center flex items-center justify-center">
                         Phone Number

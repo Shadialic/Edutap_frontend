@@ -19,7 +19,7 @@ import { LoadTutorList } from "../../../api/AdminApi";
 import { fetchChapter } from "../../../api/VendorApi";
 import { Loader } from "../../Constans/Loader/Loader";
 
-const StripePromise =  loadStripe(
+const StripePromise = loadStripe(
   import.meta.env.VITE_REACT_APP_PUBLISHABLE_KEY
 );
 
@@ -74,7 +74,6 @@ function DetailsCourses({ data, offer, newOffer }) {
     setDiscount(dis);
   }, []);
 
-  const tutorInfo = useSelector((state) => state.tutor.tutorInfo);
   const userInfo = useSelector((state) => state.user.userInfo);
   const userId = userInfo.id;
 
@@ -110,7 +109,7 @@ function DetailsCourses({ data, offer, newOffer }) {
         </div>
       ) : (
         <>
-          <div className="flex flex-col sm:flex lg:flex-row w-screen h-full p-4 overflow-x-hidden">
+          <div className="flex flex-col sm:flex lg:flex-row w- h-full p-4 overflow-x-hidden">
             <div className="w-full sm:w-[70%] h-[60%] bg-white shadow-lg p-5 border-1">
               <div className="flex flex-row w-14 h-10 bg-red p-3">
                 <button className="flex flex-row w-10 h-6 bg-violet-600 font-prompt text-md text-white rounded-lg text-center pl-1">
@@ -123,7 +122,7 @@ function DetailsCourses({ data, offer, newOffer }) {
               </div>
               <div className="flex flex-row mt-2 gap-2">
                 <span className="font-prompt pl-6 ">{rating}</span>
-                <div className="text-lg">
+                <div className="text-lg ">
                   <Rating
                     sx={{
                       fontSize: "18px",
@@ -135,7 +134,7 @@ function DetailsCourses({ data, offer, newOffer }) {
                       },
                       flex: "0 0 auto",
                     }}
-                    className="pt-1 text-lg"
+                    className="text-lg"
                     value={rating}
                     precision={0.5}
                     emptyIcon={
@@ -190,35 +189,33 @@ function DetailsCourses({ data, offer, newOffer }) {
                 </div>
               )}
             </div>
-            <div className=" w-full sm:w-[30%] h-94 bg-white ml-5 border-1 shadow-xl  ">
+            <div className="w-full sm:w-[30%]  max-h-[60%] bg-white ml-5 border-1 shadow-xl overflow-auto">
               <div className="flex flex-row">
                 <img className="w-4 h-5 mt-5 ml-4" src={review} alt="" />
                 <h1 className="font-prompt p-4 pl-2">Reviews</h1>
               </div>
               {reviews.length > 0 ? (
                 <div className="">
-                  {reviews &&
-                    reviews.map((review, index) => (
-                      <div
-                        key={index}
-                        className="w-[95%] h-[10%] p-1 pl-3 font-prompt"
-                      >
-                        <div className="flex flex-col border-2 border-gray-100">
-                          <div className="mb-2">
-                            <h1 className="p-2">{review.description}</h1>
-                            <div className="flex flex-row items-center">
-                              <h1 className="p-2 text-sm">{review.author}</h1>
-                              <h1 className="p-2 text-sm left-2">
-                                {" "}
-                                {TimeMange(review.date) == "NaN years ago"
-                                  ? "just now"
-                                  : TimeMange(review.date)}
-                              </h1>
-                            </div>
+                  {reviews.map((review, index) => (
+                    <div
+                      key={index}
+                      className="w-[95%] p-1 pl-3 font-prompt border-b border-gray-100"
+                    >
+                      <div className="flex flex-col">
+                        <div className="mb-2">
+                          <h1 className="p-2">{review.description}</h1>
+                          <div className="flex flex-row items-center">
+                            <h1 className="p-2 text-sm">{review.author}</h1>
+                            <h1 className="p-2 text-sm left-2">
+                              {TimeMange(review.date) == "NaN years ago"
+                                ? "just now"
+                                : TimeMange(review.date)}
+                            </h1>
                           </div>
                         </div>
                       </div>
-                    ))}
+                    </div>
+                  ))}
                 </div>
               ) : (
                 <h1 className="flex justify-center font-prompt">

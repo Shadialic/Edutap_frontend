@@ -39,7 +39,7 @@ function PaymentReport() {
   return (
     <>
       <Header />
-      <div className="w-screen h-screen overflow-hidden flex justify-center">
+      <div className=" h-screen overflow-hidden flex justify-center">
         <div className="flex justify-center items-center flex-col w-[90%] h-[100%] bg-violet-700">
           <h1 className="flex text-3xl font-prompt p-6 text-white">
             Payment History

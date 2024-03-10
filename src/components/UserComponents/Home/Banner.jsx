@@ -39,7 +39,7 @@ function Banner() {
 
   return (
     <>
-      <div className="bg-[#fbfaff] ">
+      <div className="bg-[#fbfaff] overflow-hidden">
         <h1 className="w-full sm:p-7 font-prompt font-prompt-semibold text-2xl">
           Most Popular Courses
         </h1>
