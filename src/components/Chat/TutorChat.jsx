@@ -319,11 +319,19 @@ function TutorChat() {
                                       key={index}
                                       className="flex items-center"
                                     >
-                                      <Avatar
-                                        src={user.members[0].image}
-                                        alt={`Selected User ${index}`}
-                                      />
-                                      {/* Optionally, you can include a cancel button for each selected user */}
+                                      {user.members[0].image ? (
+                                        <Avatar
+                                          src={user.members[0].image}
+                                          alt={`Selected User ${index}`}
+                                          size="md"
+                                        />
+                                      ) : (
+                                        <Avatar
+                                          src={profile}
+                                          alt="avatar"
+                                          size="md"
+                                        />
+                                      )}
                                       {/* <Button onClick={() => handleDeselectUser(user)}>Cancel</Button> */}
                                     </div>
                                   ))}

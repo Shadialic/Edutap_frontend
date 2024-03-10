@@ -118,7 +118,7 @@ function DetaileClass({ courseId }) {
             </Dialog>
           )}
           {!isOpn ? (
-            <div className="w-screen h-screen">
+            <div className=" h-screen">
               <div className="flex flex-col h-full">
                 <div className="flex justify-between items-center p-6 bg-gray-200">
                   <h1 className="text-3xl font-prompt font-semibold m-0">

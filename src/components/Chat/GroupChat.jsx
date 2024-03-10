@@ -9,9 +9,8 @@ import {
   Input,
 } from "@material-tailwind/react";
 function GroupChat() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const [groupName, setGroupName] = useState("");
-  const [user, setUsers] = useState("");
 
   const createGroup = () => {
     closeDialog();
