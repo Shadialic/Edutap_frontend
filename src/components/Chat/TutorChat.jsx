@@ -459,7 +459,7 @@ function TutorChat() {
                       <div>
                         <Typography
                           variant="h6"
-                          className="text-font-prompt font- uppercase mb-2 ml-2"
+                          className="font-prompt font-prompt-semibold  mb-2 ml-2"
                         >
                           {chat.members[0].userName}
                         </Typography>
@@ -483,7 +483,7 @@ function TutorChat() {
                 </div>
               ))}
 
-              {groupChat.map((item, index) => (
+              {groupChat&&groupChat.map((item, index) => (
                 <div
                   key={index}
                   className={`p-3 border-b border-gray-200 hover:bg-violet-700 hover:text-white hover:rounded-md cursor-pointer ${
@@ -507,7 +507,7 @@ function TutorChat() {
                       <div>
                         <Typography
                           variant="h6"
-                          className="text-font-prompt font- uppercase mb-2"
+                          className="text-font-prompt font-prompt-semibold  mb-2 ml-2"
                         >
                           {item.groupName}
                         </Typography>
@@ -531,7 +531,7 @@ function TutorChat() {
               <div className="flex flex-col h-full">
                 <div className="flex justify-between items-center p-3 border-b border-gray-200">
                   <div className="flex items-center">
-                    {currentChat.members[0].image ? (
+                    {currentChat.members[0].image||currentChat.image ? (
                       <Avatar
                         src={currentChat.members[0].image || currentChat.image}
                         alt="avatar"

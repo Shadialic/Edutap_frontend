@@ -1,6 +1,8 @@
 import axios from "axios";
 const instance = axios.create({
-  baseURL: "https://edutap.malefashion.fun/vendor",
+  // baseURL: "https://edutap.malefashion.fun/vendor",
+  baseURL: "http://localhost:3000/vendor"
+
 });
 
 const token = localStorage.getItem("tutortoken");
