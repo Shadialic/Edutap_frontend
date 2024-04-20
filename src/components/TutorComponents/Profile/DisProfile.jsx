@@ -107,14 +107,7 @@ function DisProfile({}) {
           <div className="flex-col w-full h-full bg-white-400 shadow-lg mr-36 justify-start items-start">
             <TutorDeatails formData={formData} setFormData={setFormData} />
             {/* <div className="flex items-center "> */}
-            <div className="flex absolute  left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[8%] h-[8%] bg-blue-700 text-white  mt-10 ml-28 rounded-lg">
-              <button
-                onClick={() => editProfile()}
-                className="text-center justify-center items-center font-prompt ml-9 "
-              >
-                Edit
-              </button>
-            </div>
+      
           </div>
           {/* </div> */}
         </div>

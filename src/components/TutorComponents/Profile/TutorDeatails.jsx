@@ -37,7 +37,7 @@ function TutorDeatails({ formData, setFormData }) {
                         className="w-[100%] border-[1px] border-[#da05dace] focus:border-[#FAFA] bg-white h-12 rounded-md p-6 font-prompt text-lg"
                         style={{ paddingLeft: "1px" }}
                         value={item.tutorName}
-                        onChange={(e) => handleChange(e)}
+                        // onChange={(e) => handleChange(e)}
                         type="text"
                       />
                       <input
@@ -45,7 +45,7 @@ function TutorDeatails({ formData, setFormData }) {
                         className="w-[100%] border-[1px] border-[#da05dace] focus:border-[#FAFA] bg-white h-12 rounded-md p-6 font-prompt text-lg"
                         style={{ paddingLeft: "1px" }}
                         value={item.email}
-                        onChange={(e) => handleChange(e)}
+                        // onChange={(e) => handleChange(e)}
                         type="text"
                       />
                       <input
@@ -53,7 +53,7 @@ function TutorDeatails({ formData, setFormData }) {
                         className="w-[100%] border-[1px] border-[#da05dace] focus:border-[#FAFA] bg-white h-12 rounded-md p-6 font-prompt text-lg"
                         style={{ paddingLeft: "1px" }}
                         value={item.phone}
-                        onChange={(e) => handleChange(e)}
+                        // onChange={(e) => handleChange(e)}
                         type="text"
                       />
                     </div>
