@@ -148,42 +148,6 @@ function ChapterForm({ setOpn, courseId }) {
                   />
                 </div>
               </div>
-              <div className="font-promt p-8 col-span-full">
-                <label htmlFor="" className="text-[14px] text-shadow-black">
-                  Demo Video
-                </label>
-                <div
-                  className="flex flex-col justify-center items-center border-2 border-gray-100 w-[480px] h-[65px] outline-none rounded-md shadow-md p-2"
-                  onClick={() => {
-                    document.getElementById("demoFileInput").click();
-                  }}
-                >
-                  <div className="p-1 flex justify-start items-start">
-                    <img className="w-10 h-6" src={upload} alt="Upload" />
-                  </div>
-                  {demoFileName && demoFileName ? (
-                    <div className="">
-                      <label className="text-[14px] text-shadow-black">
-                        Selected Demo File:{" "}
-                      </label>
-                      <span className="text-[16px]">{demoFileName}</span>
-                    </div>
-                  ) : (
-                    <span className="flex text-[12px] justify-center items-center">
-                      MP4, AVI, MOV, MKV or WEBM
-                    </span>
-                  )}
-
-                  <input
-                    id="demoFileInput"
-                    className="hidden w-[250px] sm:w-[480px] h-[40px] outline-none rounded-md shadow-md p-2"
-                    type="file"
-                    name="file"
-                    placeholder=""
-                    onChange={(event) => handleVideoChange(event, "demo")}
-                  />
-                </div>
-              </div>
               <div className="font-promt p-1 pl-8 col-span-full">
                 <label htmlFor="" className="text-[14px] text-shadow-black">
                   Chapter Video

@@ -14,6 +14,7 @@ function Form() {
   const [category, setCategory] = useState("");
   const [categoreas, setCategoreas] = useState([]);
   const [profilePic, setProfilePic] = useState("");
+  const [demoVideo, setDemoVideo] = useState("");
 
   const [formData, setFormData] = useState({
     title: "",
@@ -21,6 +22,7 @@ function Form() {
     price: "",
     image: null,
     category: "",
+    demo: "",
   });
 
   useEffect(() => {
@@ -49,6 +51,41 @@ function Form() {
       ...prevFormData,
       [name]: value,
     }));
+  };
+  const uploadVideo = async (file) => {
+    console.log("333333333333333333333");
+    try {
+      // setLoading(true);
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("upload_preset", "Edu-tap");
+      const cloudinaryResponse = await fetch(
+        "https://api.cloudinary.com/v1_1/dveis0axa/video/upload",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      if (!cloudinaryResponse.ok) {
+        throw new Error(
+          `Failed to upload video. Status: ${cloudinaryResponse.status}`
+        );
+      }
+      const cloudinaryData = await cloudinaryResponse.json();
+      console.log("Cloudinary response:", cloudinaryData); // Add this line to log the response
+
+      if (cloudinaryData.error) {
+        console.log(cloudinaryData.error);
+        return;
+      }
+      const uploadedVideoUrl = cloudinaryData.secure_url;
+      // setLoading(false);
+      return uploadedVideoUrl;
+    } catch (error) {
+      // setLoading(false);
+      console.log("Error during video upload:", error);
+    }
   };
 
   const uploadImage = async (file) => {
@@ -82,6 +119,30 @@ function Form() {
       console.log("Error during image upload:", error);
     }
   };
+  
+  const handleVideoChange = async (event) => {
+    console.log("Event:", event);
+    const file = event.target.files[0];
+    console.log("Selected file:", file);
+  
+    if (!file) {
+      toast.error("No file selected");
+      return;
+    }
+  
+    try {
+      const url = await uploadVideo(file);
+      setDemoVideo(url);
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        demo: url,
+      }));
+    } catch (err) {
+      console.error("Error uploading video:", err);
+      toast.error(err.message || "An error occurred during upload.");
+    }
+  };
+  
 
   const handleFileChange = async (e) => {
     try {
@@ -99,7 +160,12 @@ function Form() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (formData.title === "" || formData.description === "" || !profilePic) {
+    if (
+      formData.title === "" ||
+      formData.description === "" ||
+      !profilePic ||
+      !demoVideo
+    ) {
       toast.error("Please fill in all required fields and select an image");
     } else {
       const courseData = {
@@ -109,6 +175,7 @@ function Form() {
         payment,
         image: profilePic,
         auther,
+        demo: demoVideo,
       };
       try {
         const res = await CoursrManage(courseData);
@@ -129,6 +196,8 @@ function Form() {
       }
     }
   };
+  console.log(formData, "pwpwpwpwp");
+  console.log(demoVideo, "demoVideo");
 
   return (
     <div className="sm:flex">
@@ -252,7 +321,7 @@ function Form() {
                     htmlFor="description"
                     className="block text-sm font-medium leading-6 text-black"
                   >
-                    About
+                    Write about a Course
                   </label>
                   <div className="mt-2">
                     <textarea
@@ -265,28 +334,25 @@ function Form() {
                       defaultValue={""}
                     />
                   </div>
-                  <p className="mt-3 text-sm leading-6 text-gray-600">
-                    Write about the course.
-                  </p>
                 </div>
 
-                <div className="col-span-full">
-                  <label
-                    htmlFor="cover-photo"
-                    className="block text-sm font-medium leading-6 text-black"
-                  >
-                    Cover photo
-                  </label>
-                  <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-                    <div className="text-center">
+                <div className="col-span-full w-[100%]">
+                  <div className="mt-2 flex justify-center gap-8 rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
+                    <div className="text-center w-[50%]">
+                      <label
+                        htmlFor="cover-photo"
+                        className="block text-sm font-medium leading-6 text-black"
+                      >
+                        Cover photo
+                      </label>
                       <div className="mt-4 flex text-sm leading-6 text-gray-600">
                         <label
-                          htmlFor="image"
+                          htmlFor="cover-photo-upload"
                           className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
                         >
                           <span>Upload a file</span>
                           <input
-                            id="image"
+                            id="cover-photo-upload"
                             name="file"
                             type="file"
                             accept="image/*"
@@ -294,13 +360,41 @@ function Form() {
                             className="sr-only"
                           />
                         </label>
-                        <p className="pl-1">
-                          {" "}
-                          Click to upload or drag and drop
-                        </p>
+                        <p className="pl-1">Click to upload or drag and drop</p>
                       </div>
                       <p className="text-xs leading-5 text-gray-600">
-                        SVG, PNG, JPG or GIF (MAX. 800x400px)
+                        SVG, PNG, JPG, or GIF (MAX. 800x400px)
+                      </p>
+                    </div>
+
+                    <div className="text-center w-1/2">
+                      {" "}
+                      {/* Updated to Tailwind's fraction-based width */}
+                      <label
+                        htmlFor="demo-video"
+                        className="block text-sm font-medium leading-6 text-black"
+                      >
+                        Demo Video
+                      </label>
+                      <div className="mt-4 flex text-sm leading-6 text-gray-600">
+                        <label
+                          htmlFor="demo-video-upload"
+                          className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+                        >
+                          <span>Upload a file</span>
+                          <input
+                            id="demo-video-upload"
+                            name="file"
+                            type="file"
+                            accept="video/*"
+                            onChange={(event) => handleVideoChange(event)}
+                            className="sr-only"
+                          />
+                        </label>
+                        <p className="pl-1">Click to upload or drag and drop</p>
+                      </div>
+                      <p className="text-xs leading-5 text-gray-600">
+                        Accepts video formats like MP4, MOV, or AVI.
                       </p>
                     </div>
                   </div>

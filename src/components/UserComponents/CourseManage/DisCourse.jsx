@@ -101,7 +101,13 @@ function DisCourse() {
   const detailsCourse = async (id) => {
     const filter = data.find((item) => item._id === id);
     setCourse(filter);
-    setOpn(true);
+    navigate('/courseDetail', {
+      state: {
+        data: filter,
+        Offer: offer,
+        newOffer: newOffer
+      }
+    });
   };
   //Fetch Offers
   useEffect(() => {
@@ -115,7 +121,6 @@ function DisCourse() {
   const settings = {
     infinite: true,
     slidesToShow: isMobile ? 2 : 3,
-
     slidesToScroll: 1,
     autoplay: true,
     speed: 2000,
@@ -124,7 +129,6 @@ function DisCourse() {
 
   return (
     <>
-      {!isOpn ? (
         <div className="flex flex-col sm:flex  overflow-hidden lg:flex-row">
           {!showCategoryMenu && (
             <div className="lg:hidden w-full flex flex-col h-full justify-center items-center lg:gap-1 mt-3">
@@ -292,9 +296,7 @@ function DisCourse() {
             </div>
           </div>
         </div>
-      ) : (
-        <DetailsCourses data={course} offer={offer} newOffer={newOffer} />
-      )}
+    
       <Footer />
     </>
   );

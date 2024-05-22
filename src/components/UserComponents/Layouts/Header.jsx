@@ -1,8 +1,10 @@
 import { NavLink, Link, useNavigate } from "react-router-dom";
 import logo from "../../../assets/images/logoO.png";
+import {jwtDecode} from 'jwt-decode';
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { resetState } from "../../../Redux/UserSlice/UserSlice";
+
 
 const Navbar = () => {
   const [showNavbar, setShowNavbar] = useState(false);
@@ -11,6 +13,18 @@ const Navbar = () => {
   const navigate = useNavigate();
   const userInfo = useSelector((state) => state.user.userInfo);
   const userName = userInfo.userName;
+  const token=localStorage.getItem("token")
+  let userAuth = null;
+  if (token) {
+    try {
+      userAuth = jwtDecode(token); 
+    } catch (error) {
+      console.error("Invalid token:", error); 
+    }
+  } else {
+    console.warn("No token found in local storage.");
+  }
+
 
   const handleShowNavbar = () => {
     setShowNavbar(!showNavbar);

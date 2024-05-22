@@ -1,190 +1,157 @@
-import React, { useEffect, useRef, useState } from "react";
-// import empty from "../../../public/images/tutor/noData.png";
-import ChapterForm from "../Add_form/ChapterForm";
-import {
-  fetchChapter,
-  manageChapter,
-} from "../../../api/VendorApi";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlay, faPause, faTrash } from "@fortawesome/free-solid-svg-icons";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import {
-  Button,
-  Dialog,
-  DialogHeader,
-  DialogBody,
-  DialogFooter,
-} from "@material-tailwind/react";
-import { Loader } from "../../Constans/Loader/Loader";
+import React, { useEffect, useState } from 'react';
+import { fetchChapter, manageChapter } from '../../../api/VendorApi';
+import { Loader } from '../../Constans/Loader/Loader';
+import { ToastContainer,toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Lessonform from '../Add_form/Lessonform';
+import menu from '../../../assets/icons/menu.png';
 
-function DetaileClass({ courseId }) {
-  const [isOpn,setOpn] = useState(false);
-  const [chapter,setChpter] = useState([]);
-  const [manageControle, setmanageControle] = useState(false);
-  const [dialogOpen, setDialogOpen] = useState(false);
-  const [deleteChapterId, setDeleteChapterId] = useState(null);
+function Derr({ courseId }) {
+  const [chapters, setChapters] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [selectedChapter, setSelectedChapter] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null); // New state to track active dropdown
 
   useEffect(() => {
     const fetch = async () => {
       try {
         const res = await fetchChapter();
         const filterData = res.data.data;
-        const data = filterData.filter((item) => item.course_id === courseId);
-        setChpter(data);
+        const courseChapters = filterData.filter(
+          (item) => item.course_id === courseId
+        );
+        setChapters(courseChapters);
         setIsLoading(false);
       } catch (error) {
-        console.error("Failed to fetch chapters:", error);
+        console.error('Failed to fetch chapters:', error);
       }
     };
     fetch();
-  }, [courseId,isOpn]);
+  }, [courseId, isModalOpen]);
 
-  const videoRef = useRef(null);
-  const togglePlayPause = () => {
-    const video = videoRef.current;
-    if (video.paused) {
-      video.play();
-      setmanageControle(!manageControle);
-    } else {
-      video.pause();
-      setmanageControle(!manageControle);
-    }
+  const handleAddChapter = () => {
+    setIsModalOpen(true);
   };
-
-  const addChapter = () => {
-    setOpn(true);
-  };
-
-  const handleDelete = async () => {
+  const handleDelete = async (id) => {
     try {
-      await manageChapter(deleteChapterId);
+      await manageChapter(id);
       setDialogOpen(false);
       const res = await fetchChapter();
       const filterData = res.data.data;
       const data = filterData.filter((item) => item.course_id === courseId);
-      setChpter(data);
+      setChapters(data);
       toast.success("Chapter deleted successfully.");
     } catch (error) {
       console.error("Failed to delete chapter:", error);
       toast.error("Failed to delete chapter.");
     }
   };
-
-  const handleDeleteClick = (id) => {
-    setDeleteChapterId(id);
-    setDialogOpen(true);
+  const toggleDropdown = (index) => {
+    if (activeDropdown === index) {
+      setActiveDropdown(null); 
+    } else {
+      setActiveDropdown(index); 
+    }
   };
 
-  const handleCancel = () => {
-    setDialogOpen(false);
+  const handleEditChapter = (chapter) => {
+    console.log('Edit chapter:', chapter);
+    // Implement your edit logic here
   };
+
+ 
 
   return (
     <>
       {isLoading ? (
-        <div>
-          <Loader />
-        </div>
+        <Loader />
       ) : (
         <>
-          {dialogOpen && (
-            <Dialog
-              open={true} 
-              handler={handleCancel}
-              animate={{
-                mount: { scale: 1, y: 0 },
-                unmount: { scale: 1, y: -100 },
-              }}
-            >
-              <DialogHeader>Delete Chapter</DialogHeader>
-              <DialogBody>
-                Are you sure you want to delete this chapter?
-              </DialogBody>
-              <DialogFooter>
-                <Button
-                  variant="text"
-                  color="red"
-                  onClick={handleCancel}
-                  className="mr-1"
-                >
-                  Cancel
-                </Button>
-                <Button variant="gradient" color="green" onClick={handleDelete}>
-                  Confirm
-                </Button>
-              </DialogFooter>
-            </Dialog>
-          )}
-          {!isOpn ? (
-            <div className=" h-screen">
-              <div className="flex flex-col h-full">
-                <div className="flex justify-between items-center p-6 bg-gray-200">
-                  <h1 className="text-3xl font-prompt font-semibold m-0">
-                    Chapters
-                  </h1>
-                  <button
-                    onClick={addChapter}
-                    className="px-4 py-2 bg-violet-600 font-prompt text-white rounded-lg"
+          <div className="h-full p-6 flex">
+            <div className="w-1/3 shadow-md shadow-gray-300 p-4">
+            <div className="flex items-center justify-between mb-4">
+  <h1 className="text-xl font-semibold font-prompt">Lessons</h1>
+
+  <button
+    onClick={handleAddChapter}
+    className="w-24 h-12 bg-[#2840b4] text-white rounded-lg"
+  >
+    Add Chapter
+  </button>
+</div>
+              <div className="overflow-y-auto h-96">
+                {chapters.map((chapter, index) => (
+                  <div
+                    key={index}
+                    className={`flex justify-between p-3 mt-2 rounded-md cursor-pointer ${
+                      selectedChapter === chapter
+                        ? 'bg-gray-300'
+                        : 'bg-gray-200'
+                    }`}
+                    onClick={() => {
+                      setSelectedChapter(chapter);
+                      setActiveDropdown(null); // Close the dropdown when selecting a chapter
+                    }}
                   >
-                    Add Chapter
-                  </button>
-                </div>
-                <div className="flex flex-col gap-6 p-6 overflow-auto   w">
-                  {chapter.map((item, index) => (
-                    <div
-                      key={index + 1}
-                      className="border-2 border-gray-100 rounded-lg"
-                    >
-                      <div className="video-container relative">
-                        <video
-                          className="w-full"
-                          ref={videoRef}
-                          src={item.chapterVideo}
-                          controls={manageControle ? "controls" : ""}
-                        />
-                        <div className="custom-controls flex justify-center items-center absolute inset-0 ">
+                    <span className="text-md font-prompt">
+                      #{index + 1} {chapter.chapterTitle}
+                    </span>
+                    <div className="relative ">
+                      <img
+                        src={menu}
+                        onClick={(e) => {
+                          e.stopPropagation(); // Prevent triggering parent click
+                          toggleDropdown(index);
+                        }}
+                        className="w-8 h-8 cursor-pointer "
+                        alt=""
+                      />
+                      {activeDropdown === index && (
+                        <div className="absolute top-10 right-0 bg-white shadow-lg p-2 rounded-md z-10">
                           <button
-                            className={`${
-                              !manageControle
-                                ? "bg-white rounded-full p-1 pl-4 pr-3"
-                                : ""
-                            }`}
-                            onClick={togglePlayPause}
+                            className="block w-full text-left hover:bg-gray-200 p-2"
+                            onClick={() => handleEditChapter(chapter)}
                           >
-                            {manageControle ? (
-                              <FontAwesomeIcon icon={faPause} />
-                            ) : (
-                              <FontAwesomeIcon icon={faPlay} />
-                            )}
+                            Edit
+                          </button>
+                          <button
+                            className="block w-full text-left hover:bg-gray-200 p-2"
+                            onClick={() => handleDelete(chapter._id)}
+                          >
+                            Delete
                           </button>
                         </div>
-                      </div>
-                      <div className="p-4 flex justify-between items-center">
-                        <h1 className="text-xl font-prompt-semibold">
-                          #{index + 1} {item.chapterTitle}
-                        </h1>
-                        <button
-                          className="text-purple-600"
-                          onClick={() => handleDeleteClick(item._id)}
-                        >
-                          <FontAwesomeIcon icon={faTrash} />
-                        </button>
-                      </div>
+                      )}
                     </div>
-                  ))}
-                </div>
+                  </div>
+                ))}
               </div>
             </div>
-          ) : (
-            <ChapterForm setOpn={setOpn} courseId={courseId} />
-          )}
+            <div className="w-2/3 p-4">
+              {selectedChapter ? (
+                <video
+                  controls
+                  className="w-full"
+                  src={selectedChapter.chapterVideo}
+                />
+              ) : (
+                <div className="text-center text-gray-500">
+                  Select a chapter to view its video
+                </div>
+              )}
+            </div>
+          </div>
         </>
       )}
+      {isModalOpen && (
+        <Lessonform setIsModalOpen={setIsModalOpen} courseId={courseId} />
+      )}
+
       <ToastContainer />
     </>
   );
 }
 
-export default DetaileClass;
+export default Derr;

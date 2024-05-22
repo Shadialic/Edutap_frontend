@@ -48,6 +48,7 @@ function LoadStripe({
           courseId: courseId,
         };
         const response = await SuccessRequest(Buydata);
+        
         toast(response.data.message);
         console.log(response, "response when it is sucecss");
         if (response.status === 200) {

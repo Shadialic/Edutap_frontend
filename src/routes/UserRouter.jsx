@@ -18,6 +18,7 @@ import Error from "../components/Error/Error";
 import UserProtect from "./UserProtect";
 import UserVideoChat from "../pages/UserPages/UserVideoChat";
 import Certificate from "../pages/UserPages/Certificate";
+import CourseDetails from "../pages/UserPages/CourseDetails";
 
 
 function UserRouter() {
@@ -39,6 +40,8 @@ function UserRouter() {
       <Route path="/signup" element={<Signup />} />
       <Route path="/profile" element={<UserProtect><Profile/></UserProtect>} />
       <Route path="/course" element={<UserProtect><Course /></UserProtect>} />
+      <Route path="/courseDetail" element={<UserProtect><CourseDetails /></UserProtect>} />
+
        <Route path="/enrollments"element={<UserProtect><Enrollments /> </UserProtect> }/>
       <Route path="/about" element={<About />} />
       <Route path="/blog" element={<Blog />} />

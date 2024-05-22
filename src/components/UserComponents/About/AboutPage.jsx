@@ -53,7 +53,7 @@ function AboutPage() {
               <div className="w-64 h-80 bg-white shadow shadow-violet-700 rounded-2xl">
                 <img className="" src={editing} alt="" />
 
-                <h1 className="text-center text-2xl font-prompt-semibold font-prompt mt-7">
+                <h1 className="text-center text-1xl font-prompt-semibold font-prompt mt-7">
                   {category[0]}
                 </h1>
 
@@ -73,7 +73,7 @@ function AboutPage() {
                   src={photoshop}
                   alt=""
                 />
-                <h1 className="text-center text-2xl font-prompt-semibold font-prompt">
+                <h1 className="text-center text-1xl font-prompt-semibold font-prompt">
                   {category[1]}
                 </h1>
                 <div className="flex flex-row p-4">
@@ -91,7 +91,7 @@ function AboutPage() {
                   src={photoshop}
                   alt=""
                 />
-                <h1 className="text-center text-2xl font-prompt-semibold font-prompt">
+                <h1 className="text-center text-1xl font-prompt-semibold font-prompt">
                   {category[2]}
                 </h1>
                 <div className="flex flex-row p-4">
@@ -110,7 +110,7 @@ function AboutPage() {
                   src={photoshop}
                   alt=""
                 />
-                <h1 className="text-center text-2xl font-prompt-semibold font-prompt">
+                <h1 className="text-center text-1xl font-prompt-semibold font-prompt">
                   {category[1]}
                 </h1>
                 <div className="flex flex-row p-4">

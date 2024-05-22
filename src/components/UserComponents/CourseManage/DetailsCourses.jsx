@@ -14,7 +14,7 @@ import {
   getUserCourseRating,
   purchaseCourse,
 } from "../../../api/UserApi";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { LoadTutorList } from "../../../api/AdminApi";
 import { fetchChapter } from "../../../api/VendorApi";
 import { Loader } from "../../Constans/Loader/Loader";
@@ -23,7 +23,14 @@ const StripePromise = loadStripe(
   import.meta.env.VITE_REACT_APP_PUBLISHABLE_KEY
 );
 
-function DetailsCourses({ data, offer, newOffer }) {
+function DetailsCourses() {
+  const location=useLocation()
+  const data=location.state.data
+  const offer=location.state.Offer
+  const newOffer=location.state.newOffer
+  console.log(data,'{ data, offer, newOffer }');
+
+
   const navigate = useNavigate();
   const [chapter, setChapter] = useState([]);
   const [reviews, setReviews] = useState([]);
@@ -246,10 +253,10 @@ function DetailsCourses({ data, offer, newOffer }) {
           </div>
           <div className="sm:flex flex-row">
             <div className=" w-full sm:relative lg:w-[50%] h-fit p-5">
-              {chapter.length > 0 && chapter[0].demoVideo && (
+              { data.demoVideo && (
                 <video
                   className="w-full h-auto"
-                  src={chapter[0].demoVideo}
+                  src={data.demoVideo}
                   controls
                   autoPlay={true}
                 />

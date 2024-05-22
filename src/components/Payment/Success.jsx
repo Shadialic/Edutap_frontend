@@ -17,6 +17,7 @@ function Success() {
         src="/src/assets/video/PaymentSuccessfullMain.mp4"
         className="max-w-full"
         autoPlay
+        loop
         muted
       ></video>
     </div>

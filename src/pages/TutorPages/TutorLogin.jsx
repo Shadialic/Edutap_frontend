@@ -40,6 +40,7 @@ function TutorLogin() {
             }
           );
           const result = await tutorRegisterGoogle(response.data);
+          
           toast(result.data.alert);
           if (result.data.created) {
             toast(result.data.alert);

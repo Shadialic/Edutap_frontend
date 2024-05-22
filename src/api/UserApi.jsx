@@ -308,6 +308,7 @@ export async function checkConnection(data) {
 }
 export async function SuccessRequest(buyData) {
   try {
+    console.log('0303030303');
     const res = await UserApi.post(`/success`, { data: buyData });
     return res;
   } catch (error) {

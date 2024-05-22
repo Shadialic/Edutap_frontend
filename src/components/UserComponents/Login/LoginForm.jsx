@@ -38,17 +38,19 @@ function LoginForm() {
             }
           );
           const result = await userRegisterGoogle(response.data);
+          
           toast(result.data.alert);
           if (result.data.created) {
             toast(result.data.alert);
             dispatch(
               setUserDetails({
-                userName: result.data.userName,
-                email: result.data.email,
+                id:result.data.data._id,
+                userName: result.data.data.userName,
+                email: result.data.data.email,
                 role: "user",
               })
             );
-            localStorage.setItem("token", result.data.jwtToken);
+            localStorage.setItem("token", result.data.token);
             navigate("/");
           } else {
             toast.error(result.data.message);
