@@ -1,6 +1,6 @@
 import axios from "axios";
 const instance = axios.create({
-  baseURL: "https://edutap.malefashion.fun"
+  baseURL: import.meta.env.VITE_USER,
   // baseURL: "http://localhost:3000"
 
 });
