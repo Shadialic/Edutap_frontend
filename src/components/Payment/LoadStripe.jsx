@@ -37,6 +37,8 @@ function LoadStripe({
         confirmParams: {},
         redirect: "if_required",
       });
+  
+      
       if (paymentIntent) {
         const Buydata = {
           paymentstatus: "success",

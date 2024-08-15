@@ -13,7 +13,7 @@ function Comment({ chapterId, userInfo }) {
 
 
   useEffect(() => {
-    const newSocket = io("https://edutap.malefashion.fun");
+    const newSocket = io(import.meta.env.VITE_SOCKET_BASE_URL);
     setSocket(newSocket);
     return () => {
       newSocket.disconnect();
